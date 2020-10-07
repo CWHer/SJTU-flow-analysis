@@ -1,0 +1,4 @@
+__pycache__
+test*
+fail_log.txt
+log.json
