@@ -17,14 +17,20 @@ class CanteenCrawler():
     def get(self, t_now):
         log = {}
         for _ in range(5):
-            response = requests.get(self.__url, timeout=4)
-            if response.status_code == 200:
-                self.content = json.loads(response.text)
-                for canteen in self.content:
-                    log.update({
-                        canteen['Name']: (canteen['Seat_u'], canteen['Seat_s'])
-                    })
-                return log
-            time.sleep(0.05)
+            try:
+                response = requests.get(self.__url, timeout=4)
+                if response.status_code == 200:
+                    self.content = json.loads(response.text)
+                    for canteen in self.content:
+                        log.update({
+                            canteen['Name']:
+                            (canteen['Seat_u'], canteen['Seat_s'])
+                        })
+                    return log
+
+            except Exception as e:
+                print(e)
+                time.sleep(0.05)
+
         self.__write_fail_log(t_now + '  ' + self.__error_msg)
         return None
