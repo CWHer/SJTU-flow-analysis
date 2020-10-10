@@ -2,3 +2,10 @@ __pycache__
 test*
 fail_log.txt
 log.json
+Mon.json
+Tues.json
+Wed.json
+Thur.json
+Fri.json
+Sat.json
+Sun.json
