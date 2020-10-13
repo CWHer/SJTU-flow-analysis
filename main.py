@@ -11,11 +11,14 @@ while True:
     log_now = {}
 
     data = L.get(t_now)
-    if data != None:
-        data_now.update(data)
+    if data == None:
+        continue
+    data_now.update(data)
+    
     data = C.get(t_now)
-    if data != None:
-        data_now.update(data)
+    if data == None:
+        continue
+    data_now.update(data)
     log_now[t_now] = data_now
 
     with open("log.json", "a+", encoding="utf-8") as f:
